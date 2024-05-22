@@ -1,0 +1,25 @@
+
+
+  .carousel-caption {
+    color: white; /* Textfarbe auf schwarz setzen */
+    background-color: rgba(11, 18, 12, 0.7); /* Halbtransparenter weißer Hintergrund */
+    padding: 10px; /* Etwas Abstand um den Text */
+    border-radius: 10px; /* Abgerundete Ecken */
+  
+    @media (max-width: 768px) { // Für kleinere Bildschirme
+      color: white; // Textfarbe auf weiß ändern
+      background-color: rgba(66, 53, 53, 0.7); // Hintergrundfarbe anpassen
+      padding: 10px; /* Etwas Abstand um den Text */
+    border-radius: 10px; /* Abgerundete Ecken */
+    }
+  }
+  
+  .carousel-inner img {
+    height: 625px; /* Festgelegte maximale Höhe */
+    object-fit: cover; /* Damit das Bild den Platz ausfüllt */
+  
+    @media (max-width: 768px) { // Für kleinere Bildschirme
+      height: 600px; // Höhe auf automatische Anpassung ändern
+    }
+  }
+  

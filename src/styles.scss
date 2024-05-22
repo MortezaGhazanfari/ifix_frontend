@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* styles.scss oder eine globale SCSS-Datei */
+html, body {
+    background-color: #212529;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .app-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Sicherstellen, dass die Navbar über anderen Inhalten liegt */
+  }
+  
+  .app-home {
+    margin-top: 60px;
+  }
+  
+  app-navbar, app-home, app-services, app-about, app-contact, app-footer {
+    background-color: inherit;
+    width: 100%;
+  }
+  

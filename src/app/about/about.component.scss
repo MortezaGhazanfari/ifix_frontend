@@ -1,0 +1,52 @@
+  .featurette-divider {
+    margin: 2rem 0; /* Space out the Bootstrap <hr> more */
+  }
+  
+  /* Thin out the marketing headings */
+  .featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
+    margin-bottom: 1rem; /* Abstand unter den Überschriften */
+
+    @media (min-width: 40em) {
+      .featurette-heading {
+        font-size: 50px;
+      } 
+    }
+    @media (min-width: 62em) {
+      .featurette-heading {
+        margin-top: 7rem;
+      }
+    }
+  }
+
+  .lead {
+    margin-bottom: 2rem; /* Abstand unter dem Text */
+    color: white;
+  }
+
+  .featurette {
+    padding: 0 2rem; /* Abstand zu den Rändern */
+    display: flex;
+    align-items: center;
+    color: white;
+  }
+
+  .featurette .col-md-7,
+  .featurette .col-md-5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Increase spacing between image and text */
+  .featurette .col-md-5 {
+    margin-top: 1rem; /* 3 times more than padding */
+    margin-bottom: 3rem; /* 3 times more than padding */
+  }
+  .headline {
+    text-align: center; /* Zentriert den Text horizontal */
+    margin-top: 2rem;
+    color: white;
+}

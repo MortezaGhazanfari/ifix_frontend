@@ -1,0 +1,16 @@
+.app-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1030; /* Sicherstellen, dass die Navbar über anderen Inhalten liegt */
+  }
+  .app-home {
+    margin-top: 60px;
+  }
+
+  body {
+    background-color: green;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    box-sizing: border-box;
+  }
