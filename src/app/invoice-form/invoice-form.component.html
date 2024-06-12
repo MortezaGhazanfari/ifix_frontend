@@ -1,0 +1,69 @@
+<!-- src/app/invoice-form/invoice-form.component.html -->
+<form [formGroup]="invoiceForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="position0">Position 0:</label>
+      <input id="position0" formControlName="position0" type="number">
+    </div>
+    <div>
+      <label for="position1">Position 1:</label>
+      <input id="position1" formControlName="position1" type="number">
+    </div>
+    <div>
+      <label for="position2">Position 2:</label>
+      <input id="position2" formControlName="position2" type="number">
+    </div>
+    <div>
+      <label for="anzahl0">Anzahl 0:</label>
+      <input id="anzahl0" formControlName="anzahl0" type="number">
+    </div>
+    <div>
+      <label for="anzahl1">Anzahl 1:</label>
+      <input id="anzahl1" formControlName="anzahl1" type="number">
+    </div>
+    <div>
+      <label for="anzahl2">Anzahl 2:</label>
+      <input id="anzahl2" formControlName="anzahl2" type="number">
+    </div>
+    <div>
+      <label for="bezeichnung0">Bezeichnung 0:</label>
+      <input id="bezeichnung0" formControlName="bezeichnung0" type="text">
+    </div>
+    <div>
+      <label for="bezeichnung1">Bezeichnung 1:</label>
+      <input id="bezeichnung1" formControlName="bezeichnung1" type="text">
+    </div>
+    <div>
+      <label for="bezeichnung2">Bezeichnung 2:</label>
+      <input id="bezeichnung2" formControlName="bezeichnung2" type="text">
+    </div>
+    <div>
+      <label for="einzelpreis0">Einzelpreis 0:</label>
+      <input id="einzelpreis0" formControlName="einzelpreis0" type="number">
+    </div>
+    <div>
+      <label for="einzelpreis1">Einzelpreis 1:</label>
+      <input id="einzelpreis1" formControlName="einzelpreis1" type="number">
+    </div>
+    <div>
+      <label for="einzelpreis2">Einzelpreis 2:</label>
+      <input id="einzelpreis2" formControlName="einzelpreis2" type="number">
+    </div>
+    <div>
+      <label for="anzahlung">Anzahlung:</label>
+      <input id="anzahlung" formControlName="anzahlung" type="number">
+    </div>
+    <div>
+      <label for="kundenname">Kundenname:</label>
+      <input id="kundenname" formControlName="kundenname" type="text">
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email">
+    </div>
+    <div>
+      <label for="telefon">Telefon:</label>
+      <input id="telefon" formControlName="telefon" type="text">
+    </div>
+    <button type="submit" [disabled]="invoiceForm.invalid">Submit</button>
+  </form>
+  

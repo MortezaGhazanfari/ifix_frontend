@@ -1,0 +1,35 @@
+/* src/app/invoice-form/invoice-form.component.css */
+.app-invoice-form {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .app-invoice-form div {
+    margin-bottom: 10px;
+  }
+  
+  .app-invoice-form label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  .app-invoice-form input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  .app-invoice-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .app-invoice-form button[disabled] {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
