@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-interface PdfRequestData {
-  position0: number;
-  position1: number;
-  position2: number;
+export interface PdfRequestData {
   anzahl0: number;
   anzahl1: number;
   anzahl2: number;
@@ -30,7 +27,7 @@ export class InvoiceService {
 
   constructor(private http: HttpClient) { }
 
-  fillPdf(requestData: PdfRequestData): Observable<Blob> {
-    return this.http.post(this.apiUrl, requestData, { responseType: 'blob' });
+  fillPdf(requestData: PdfRequestData): Observable<HttpResponse<Blob>> {
+    return this.http.post<Blob>(this.apiUrl, requestData, { observe: 'response', responseType: 'blob' as 'json' });
   }
 }

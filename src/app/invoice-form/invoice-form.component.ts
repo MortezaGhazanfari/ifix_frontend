@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { InvoiceService } from '../invoice.service';
+import { InvoiceService, PdfRequestData } from '../invoice.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -12,9 +12,6 @@ export class InvoiceFormComponent {
 
   constructor(private fb: FormBuilder, private invoiceService: InvoiceService) {
     this.invoiceForm = this.fb.group({
-      position0: [0, Validators.required],
-      position1: [0, Validators.required],
-      position2: [0, Validators.required],
       anzahl0: [0, Validators.required],
       anzahl1: [0, Validators.required],
       anzahl2: [0, Validators.required],
@@ -33,11 +30,35 @@ export class InvoiceFormComponent {
 
   onSubmit(): void {
     if (this.invoiceForm.valid) {
-      this.invoiceService.fillPdf(this.invoiceForm.value).subscribe(response => {
-        const blob = new Blob([response], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
+      const requestData: PdfRequestData = this.invoiceForm.value;
+      this.invoiceService.fillPdf(requestData).subscribe(response => {
+        if (response.body) {
+          const blob = response.body;
+          let filename = 'invoice.pdf';
+          const contentDisposition = response.headers.get('content-disposition');
+          if (contentDisposition) {
+            const filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+            const matches = filenameRegex.exec(contentDisposition);
+            if (matches && matches[1]) {
+              filename = decodeURIComponent(matches[1].replace(/["']/g, ''));
+            }
+          }
+          const currentDate = new Date().toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\./g, '');
+          filename = `invoice_${requestData.kundenname.replace(' ', '_')}_${currentDate}.pdf`;
+
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = filename;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          document.body.removeChild(a);
+        } else {
+          console.error('No PDF content available.');
+        }
+      }, error => {
+        console.error('Error generating PDF:', error);
       });
     }
-  }
-}
+  }}

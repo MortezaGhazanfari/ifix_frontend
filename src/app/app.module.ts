@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { InvoiceFormComponent } from './invoice-form/invoice-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FirstpageComponent } from './firstpage/firstpage.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContactComponent,
     FooterComponent,
     NavbarComponent,
-    InvoiceFormComponent
+    InvoiceFormComponent,
+    FirstpageComponent
   ],
   imports: [
     BrowserModule,
