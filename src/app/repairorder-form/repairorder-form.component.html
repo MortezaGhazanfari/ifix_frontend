@@ -1,0 +1,92 @@
+<form [formGroup]="repairForm" (ngSubmit)="onSubmit()" class="container mt-5">
+    <!-- First row: name, adresse, telefon, email -->
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="adresse">Adresse</label>
+        <input id="adresse" formControlName="adresse" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="telefon">Telefon</label>
+        <input id="telefon" formControlName="telefon" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" type="email" class="form-control">
+      </div>
+    </div>
+  
+    <!-- Second row: typ (dropdown), modell, imei, pin -->
+    <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="typ">Typ</label>
+        <select id="typ" formControlName="typ" class="form-control">
+          <option value="">Wählen Sie...</option>
+          <option value="Handy">Handy</option>
+          <option value="Tablet">Tablet</option>
+          <option value="Notebook">Notebook</option>
+          <option value="Smartwatch">Smartwatch</option>
+          <option value="Sonstiges">Sonstiges</option>
+        </select>
+      </div>
+      <div class="form-group col-md-3">
+        <label for="modell">Modell</label>
+        <input id="modell" formControlName="modell" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="imei">IMEI</label>
+        <input id="imei" formControlName="imei" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="pin">PIN</label>
+        <input id="pin" formControlName="pin" type="text" class="form-control">
+      </div>
+    </div>
+  
+    <!-- Third row: fehlerbeschreibung, bemerkung -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="fehlerbeschreibung">Fehlerbeschreibung</label>
+        <input id="fehlerbeschreibung" formControlName="fehlerbeschreibung" type="text" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="bemerkung">Bemerkung</label>
+        <input id="bemerkung" formControlName="bemerkung" type="text" class="form-control">
+      </div>
+    </div>
+  
+    <!-- Fourth row: kostenvoranschlag, reparaturfreigabe -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="kostenvoranschlag">Kostenvoranschlag</label>
+        <input id="kostenvoranschlag" formControlName="kostenvoranschlag" type="number" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="reparaturfreigabe">Reparaturfreigabe</label>
+        <input id="reparaturfreigabe" formControlName="reparaturfreigabe" type="number" class="form-control">
+      </div>
+    </div>
+  
+    <!-- Fifth row: gesamtkosten, anzahlung -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="gesamtkosten">Gesamtkosten</label>
+        <input id="gesamtkosten" formControlName="gesamtkosten" type="number" class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="anzahlung">Anzahlung</label>
+        <input id="anzahlung" formControlName="anzahlung" type="number" class="form-control">
+      </div>
+    </div>
+  
+    <!-- Submit button -->
+    <div class="form-group row">
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!repairForm.valid">Generate PDF</button>
+      </div>
+    </div>
+  </form>
+  

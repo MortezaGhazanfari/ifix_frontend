@@ -11,6 +11,9 @@ import { InvoiceFormComponent } from './invoice-form/invoice-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FirstpageComponent } from './firstpage/firstpage.component';
+import { RepairorderFormComponent } from './repairorder-form/repairorder-form.component';
+import { RepairorderService } from './repairorder.service';
+import { InvoiceService } from './invoice.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { FirstpageComponent } from './firstpage/firstpage.component';
     FooterComponent,
     NavbarComponent,
     InvoiceFormComponent,
-    FirstpageComponent
+    FirstpageComponent,
+    RepairorderFormComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ import { FirstpageComponent } from './firstpage/firstpage.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [RepairorderService,InvoiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

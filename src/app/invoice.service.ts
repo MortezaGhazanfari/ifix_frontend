@@ -27,7 +27,7 @@ export class InvoiceService {
 
   constructor(private http: HttpClient) { }
 
-  fillPdf(requestData: PdfRequestData): Observable<HttpResponse<Blob>> {
+  fillPdf(requestData: PdfRequestData ): Observable<HttpResponse<Blob>> {
     return this.http.post<Blob>(this.apiUrl, requestData, { observe: 'response', responseType: 'blob' as 'json' });
   }
 }

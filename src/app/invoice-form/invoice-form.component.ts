@@ -5,27 +5,50 @@ import { InvoiceService, PdfRequestData } from '../invoice.service';
 @Component({
   selector: 'app-invoice-form',
   templateUrl: './invoice-form.component.html',
-  styleUrl: './invoice-form.component.scss'
+  styleUrls: ['./invoice-form.component.scss']
 })
 export class InvoiceFormComponent {
   invoiceForm: FormGroup;
 
   constructor(private fb: FormBuilder, private invoiceService: InvoiceService) {
     this.invoiceForm = this.fb.group({
-      anzahl0: [0, Validators.required],
-      anzahl1: [0, Validators.required],
-      anzahl2: [0, Validators.required],
+      anzahl0: [null],
+      anzahl1: [null],
+      anzahl2: [null],
       bezeichnung0: ['', Validators.required],
-      bezeichnung1: ['', Validators.required],
-      bezeichnung2: ['', Validators.required],
+      bezeichnung1: [''],
+      bezeichnung2: [''],
       einzelpreis0: [0, Validators.required],
       einzelpreis1: [0, Validators.required],
       einzelpreis2: [0, Validators.required],
       anzahlung: [0, Validators.required],
-      kundenname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      telefon: ['', Validators.required]
+      kundenname: [''],
+      email: [''],
+      telefon: ['']
     });
+
+    // Subscribe to value changes to dynamically set anzahl fields
+    this.invoiceForm.get('bezeichnung0')!.valueChanges.subscribe(value => {
+      this.updateAnzahlField('anzahl0', value);
+    });
+    this.invoiceForm.get('bezeichnung1')!.valueChanges.subscribe(value => {
+      this.updateAnzahlField('anzahl1', value);
+    });
+    this.invoiceForm.get('bezeichnung2')!.valueChanges.subscribe(value => {
+      this.updateAnzahlField('anzahl2', value);
+    });
+  }
+
+  private updateAnzahlField(anzahlField: string, bezeichnungValue: string): void {
+    const anzahlControl = this.invoiceForm.get(anzahlField);
+    if (bezeichnungValue) {
+      anzahlControl!.setValue(1);
+      anzahlControl!.setValidators(Validators.required);
+    } else {
+      anzahlControl!.setValue(null);
+      anzahlControl!.clearValidators();
+    }
+    anzahlControl!.updateValueAndValidity();
   }
 
   onSubmit(): void {
@@ -61,4 +84,5 @@ export class InvoiceFormComponent {
         console.error('Error generating PDF:', error);
       });
     }
-  }}
+  }
+}
